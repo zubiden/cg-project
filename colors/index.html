@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Color models</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main colors">
+        <div class="header">
+            <a class="header-button" href="../fractals/index.html">
+                Фрактали
+            </a>
+            <a class="header-button active" href="#">
+                Колірна модель
+            </a>
+            <a class="header-button" href="../transform/index.html">
+                Перетворення
+            </a>
+        </div>
+        <div class="content" id="content">
+            <div class="before-after flex-row">
+                <h2>До</h2>
+                <h2>Після</h2>
+            </div>
+            <div class="flex-row images">
+                <div class="canvas-container">
+                    <canvas id="input-canvas">Not supported</canvas>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="output-canvas">Not supported</canvas>
+                </div>
+            </div>
+            <div class="values flex-row">
+                <div>
+                    RGB:
+                    <span id="rgb"></span>
+                </div>
+                <div>
+                    HSV:
+                    <span id="hsv"></span>
+                </div>
+                <div>
+                    CMYK:
+                    <span id="cmyk"></span>
+                </div>
+            </div>
+            <input type="range" id="range" class="range-input" min="0" max="200" value="100" />
+            <h2 class="info">
+                Інформація
+            </h2>
+            <p>
+                HSV (також HSB) — колірна модель, заснована на трьох характеристиках кольору: колірному тоні (Hue), насиченості (Saturation) і значенні кольору (Value), який також називають яскравістю (Brightness).
+                <br />
+                CMYK (скорочено від англ. Cyan, Magenta, Yellow, BlacK color) — субтрактивна колірна модель, використовується у поліграфії, перш за все при багатофарбовому (повноколірному) друці. Вона застосовується у друкарських машинах і кольорових принтерах.
+            </p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

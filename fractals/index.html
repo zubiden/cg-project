@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fractals</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <a class="header-button active" href="#">
+                Фрактали
+            </a>
+            <a class="header-button" href="../colors/index.html">
+                Колірна модель
+            </a>
+            <a class="header-button" href="../transform/index.html">
+                Перетворення
+            </a>
+        </div>
+        <div class="content" id="content">
+            <canvas id="canvas">Not supported in your browser!</canvas>
+            <div class="overlay">
+                <div class="button-group">
+                    <div class="overlay-button" id="zoomIn">
+                        <div class="btn-content">+</div>
+                    </div>
+                    <div class="overlay-button" id="zoomOut">
+                        <div class="btn-content">-</div>
+                    </div>
+                    <div class="overlay-button" id="theme">
+                        <div class="btn-content"><img
+                                src="https://icon-library.com/images/color-palette-icon/color-palette-icon-7.jpg"
+                                alt="Change theme" /></div>
+                    </div>
+                    <div class="overlay-button" id="info">
+                        <div class="btn-content">i</div>
+                    </div>
+                </div>
+                <select id="type">
+                    <option value="mandelbrot">Mandelbrot Set (Z<sup>2</sup>)</option>
+                    <option value="ctg" selected>ctg(Z<sup>2</sup>)</option>
+                    <option value="tg">tg(Z<sup>2</sup>)</option>
+                    <option value="sin">Z*sin(Z)</option>
+                    <option value="cos">Z*cos(Z)</option>
+                </select>
+                <div class="modal" id="modal">
+                    <div class="modal-header">
+                        <div>Інформація</div>
+                        <div class="exit" id="exit">×</div>
+                    </div>
+                    <div class="modal-content">
+                        <h2>Фрактали</h2>
+                        Фрактал ( лат. fractus - Подрібнений, зламаний, розбитий) - складна геометрична фігура, що
+                        володіє властивістю самоподібності, тобто складена з декількох частин, кожна з яких подібна
+                        всьому тілі цілком. У більш широкому сенсі під фракталами розуміють безлічі точок у евклідовому
+                        просторі, мають дробову метричну розмірність (в сенсі Минковского або Хаусдорфа), або метричну
+                        розмірність, відмінну від топологічної.
+                        <img src="fractal.jpg" alt="Fractal" class="image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
