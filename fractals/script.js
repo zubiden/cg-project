@@ -91,30 +91,32 @@ function draw() {
 
             let n = 0;
 
+            let iterFunc = (v) => v;
+            switch (func) {
+                case 'ctg':
+                    iterFunc = (v) => cCot(cMul(v, v));
+                    break;
+                case 'tg':
+                    iterFunc = (v) => cTan(cMul(v, v));
+                    break;
+                case 'sin':
+                    iterFunc = (v) => cMul(v, cSin(v));
+                    break;
+                case 'cos':
+                    iterFunc = (v) => cMul(v, cCos(v));
+                    break;
+                case 'mandelbrot':
+                default:
+                    iterFunc = (v) => cMul(v, v);
+                    break;
+            }
+
             while (n < MAX_ITERATIONS) {
                 const v = {
                     x: a,
                     y: b,
                 }
-                let aa, bb;
-                switch (func) {
-                    case 'ctg':
-                        ({ x: aa, y: bb } = cCot(cMul(v, v)));
-                        break;
-                    case 'tg':
-                        ({ x: aa, y: bb } = cTan(cMul(v, v)));
-                        break;
-                    case 'sin':
-                        ({ x: aa, y: bb } = cMul(v, cSin(v)));
-                        break;
-                    case 'cos':
-                        ({ x: aa, y: bb } = cMul(v, cCos(v)));
-                        break;
-                    case 'mandelbrot':
-                    default:
-                        ({ x: aa, y: bb } = cMul(v, v));
-                        break;
-                }
+                let { x: aa, y: bb } = iterFunc(v);
                 a = aa;
                 b = bb;
                 if (func === 'mandelbrot') {
@@ -204,7 +206,7 @@ async function handlePinch(e) {
         initialPinchDistance = currentDistance
     }
     else {
-        adjustZoom(null, currentDistance / initialPinchDistance)
+        adjustZoom(null, -currentDistance / initialPinchDistance)
     }
 }
 
@@ -252,12 +254,12 @@ function hslToRgb(h, s, l) {
 }
 
 canvas.addEventListener('mousedown', onPointerDown)
-canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown))
+canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown), {passive: true})
 canvas.addEventListener('mouseup', onPointerUp)
 canvas.addEventListener('touchend', (e) => handleTouch(e, onPointerUp))
 canvas.addEventListener('mousemove', onPointerMove)
-canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
-canvas.addEventListener('wheel', (e) => adjustZoom(e.deltaY))
+canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove), {passive: true})
+canvas.addEventListener('wheel', (e) => adjustZoom(e.deltaY), {passive: true})
 window.addEventListener('resize', resizeCanvas);
 
 document.getElementById('zoomIn').addEventListener('click', () => adjustZoom(-1));
